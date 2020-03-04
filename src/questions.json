@@ -1,0 +1,78 @@
+[
+  {
+    "question": "What is the most popular programming language in the world?",
+    "possibleAnswers":
+    [
+      {
+        "text":"JavaScript",
+        "correct":true
+      },
+      {
+        "text": "C++",
+        "correct":false
+      },
+      {
+        "text": "Python",
+        "correct":false
+      },
+      {
+        "text": "Go",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Beep?",
+    "possibleAnswers":
+    [
+      {
+        "text":"Boop",
+        "correct":true
+      },
+      {
+        "text": "Moo",
+        "correct":false
+      },
+      {
+        "text": "Meep",
+        "correct":false
+      },
+      {
+        "text": "Bop",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "In JavaScript, the keyword class is used to define an object.",
+    "possibleAnswers":
+    [
+      {
+        "text":"True",
+        "correct":true
+      },
+      {
+        "text": "False",
+        "correct":false
+      }
+    ]
+  },
+  {
+    "question": "Which one of these is an example of an arrrow function in Javascript?",
+    "possibleAnswers":
+    [
+      {
+        "text":"function() {}",
+        "correct":false
+      },
+      {
+        "text": "function()",
+        "correct":false
+      },
+      {
+        "text": "() => {}",
+        "correct":true
+      }
+    ]
+  }
+]

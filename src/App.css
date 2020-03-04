@@ -1,0 +1,44 @@
+body {
+  background-color: #242222; 
+  color: white; 
+  text-align: center; 
+  font-family: "arial"; 
+}
+
+#startButton {
+  font-size: 14pt;
+  background-color: #1db89b;
+  color: #255c52;
+  border-radius: 4px; 
+  padding: 2px; 
+  border-radius: 4px; 
+  padding-left: 45px; 
+  padding-right: 45px; 
+  padding-top: 3px; 
+  padding-bottom: 3px; 
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  border: 2px solid #255c52;
+  margin-left: 10px;
+}
+
+#startButton:hover {
+  font-size: 14pt;
+  background-color: #7bd4c3;
+  color: #255c52;
+  border-radius: 4px; 
+  padding-left: 45px; 
+  padding-right: 45px; 
+  padding-top: 3px; 
+  padding-bottom: 3px; 
+  opacity: 1;
+}
+
+#possibleAnswers {
+  color: white;
+}
+
+.possibleAnsers {
+  color: white; 
+}
+
+
