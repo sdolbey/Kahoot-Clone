@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import QuizQuestion from './QuizQuestion'
+// import QuizQuestion from './QuizQuestion'
 import questions from './questions.json'
 
 const TIME_LIMIT = 5
@@ -14,7 +14,7 @@ class QuizQuestion extends React.Component {
     return <>
     <h1>{this.props.question}</h1>
     {this.props.answers.map((v, i) =>
-    <input onClick={() => this.props.nextQuestion()} type="button" key={i} value={v.text}/>)}
+    <input className="answerButton" onClick={() => this.props.nextQuestion(v.correct)} type="button" key={i} value={v.text}/>)}
     </>
     }
   }
@@ -24,19 +24,31 @@ class TitlePage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      titleText: 'Welcome to our quiz!',
-      counter: 0,
-      currentState: TITLE_STATE,
+			score: 0,
+      titleText: "Welcome to our quiz!",
+			counter: 0,
+			currentState: TITLE_STATE,
+			currentQuestion: 0
     }
-  this.timeLimit = TIME_LIMIT;
+  	this.timeLimit = TIME_LIMIT;
   }
-  nextQuestion() {
-    clearInterval(this.timer);
+  nextQuestion(correct) {
+		console.log("BUTTON PRESSED")
+		if(correct) {
+			this.setState({score: this.state.score + 1})
+		}
+		if(this.state.currentQuestion == questions.length - 1) {
+			console.log("DONE")
+		} else {
+    clearInterval(this.timer)
+		console.log(this.state.currentQuestion)
     this.setState({
       titleText: "You answered X",
-      currentState: FINAL_STATE
+      currentState: QUESTION_STATE,
+			currentQuestion: this.state.currentQuestion + 1
     })
   }
+}
   countdown() {
     console.log("Handling interval")
     console.log(this.state.counter)
@@ -51,12 +63,14 @@ class TitlePage extends React.Component {
         currentState: QUESION_STATE,
         counter: 0
       })
-      this.timer = setInterval(() => this.countdown(), 1000
-      )
-      clearInterval(this.timer)
-    }
-  }
-
+      if(this.state.currentState == TITLE_STATE) {
+				this.timer = setInterval(() => this.countdown(), 1000)
+				clearInterval(this.timer)
+			} else {
+				this.setState({titleText: "You answered!"})
+			}
+		}
+}
   start() {
     console.log("Starting!")
     this.setState({titleText: "Starting the Quiz!", counter: 0})
@@ -73,7 +87,8 @@ class TitlePage extends React.Component {
       <input className="start" type="button" value="start" onClick={()=>this.start()} />
       </>
       :
-      <QuizQuestion answers={questions[0].possibleAnswers} question={questions[0].question} nextQuestion={() => this.nextQuestion()}></QuizQuestion>)}
+      <QuizQuestion answers={questions[this.state.currentQuestion].possibleAnswers} question={questions[this.state.currentQuestion].question} nextQuestion={(correct) => this.nextQuestion(correct)}></QuizQuestion>)}
+			<p>Score: {this.state.score}</p>
       </>)
   }
 }
